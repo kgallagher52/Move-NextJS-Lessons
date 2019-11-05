@@ -7,7 +7,7 @@ import GlobalContext from '../context/globalContext';
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
 import Carousel from '../components/carousel';
-import SideMenu from '../components/sidemenu';
+import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
 const Home = () => {
