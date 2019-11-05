@@ -13,9 +13,11 @@ import MovieList from '../components/movieList';
 const Home = () => {
   const [movies, setMovies] = useState([]);
 useEffect(() => {
-  getMovies().then((movies) => {
-    setMovies(movies)
-  })
+  async function fetchData() {{
+    var resMovies = await getMovies();
+    setMovies(resMovies)
+  }}
+  fetchData()
   return () => {
     //Cleaning up the data after the component dismounts
     setMovies([]);
