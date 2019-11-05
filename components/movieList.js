@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+
+//Data Component
+import GlobalContext from '../context/globalContext'
 
 const movieList = () => {
-  const [count, setCount] = useState(0);
+  const { count, setCount} = useContext(GlobalContext)
   return (
     <>
     <button className="btn btn-primary" onClick={() => setCount(count + 1)}>Increment Number</button>
