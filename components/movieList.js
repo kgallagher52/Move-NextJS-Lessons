@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const movieList = () => {
+  const [count, setCount] = useState(0);
   return (
     <>
+    <button className="btn btn-primary" onClick={() => setCount(count + 1)}>Increment Number</button>
+    <button onClick={() => setCount(count - 1)}>Decrement Number</button>
+    {count}
       	<div className="row">
 						<div className="col-lg-4 col-md-6 mb-4">
 							<div className="card h-100">
