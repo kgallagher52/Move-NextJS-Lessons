@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Data Component
-import GlobalContext from '../context/globalContext';
-import MovieData from '../resources/1_data';
+import { getMovies } from '../actions/index';
+
 const movieList = () => {
+  const [movies, setMovies] = useState('');
+  useEffect(() => {// Getting Movies
+      setMovies(getMovies())
+    return () => {
+      setMovies('');
+    };
+  }, [movies])
+  
 	return (
 		<div className="row">
-			{MovieData.map((m) => (
+      
+			{movies ?
+        movies.map((m) => (
 				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
 					<div className="card h-100">
 						<a href={m.image}>
@@ -20,11 +30,11 @@ const movieList = () => {
 							<p className="card-text">{m.description.substr(0, 150) + '...'}</p>
 						</div>
 						<div className="card-footer">
-							<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+							<small className="text-muted">{m.rating}</small>
 						</div>
 					</div>
 				</div>
-			))}
+			)):null}
 		</div>
 	);
 };
