@@ -1,11 +1,23 @@
+import React, { Component } from 'react'
 
-//Function component
-//Using multple lines reqire you to use brackets
- const About = () => {
-   const message  = "Hello World"
-   return(
-     <h1>Hello About Page - {message}</h1>
-     )
-   }
+//Function Components
+//WHEN TO USE:
+// 1.For smaller components
+// 2.Reusable components
+// 3.Presntional components , partialy right, we can use HOOKS and specify state  
+// const About = () => {
+//   return(
+//     <h1>Hello I am a class component.</h1>
+//   )
+// }
+
+//Class component
+class About extends Component {
+  render () {
+    return (
+      <h1>Hello I am a class component.</h1>
+    )
+  }
+}
 
 export default About
