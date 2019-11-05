@@ -8,3 +8,12 @@
 
 ## Launching Project
   1. npm run dev || yarn run dev
+
+
+## get inital props
+  ```
+  This must be used if you are wanting the user or crawlers to be able to see the data right as the page is loaded. Yes the data will show visualy but if you where to check
+  the page source it wouldn't show because it loaded after the component was mounted.
+  You fix this by using gitInitialProps() shown in index.js page.
+
+  ```

@@ -10,25 +10,7 @@ import Carousel from '../components/carousel';
 import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
-const Home = () => {
-	const [ movies, setMovies ] = useState([]);
-	useEffect(() => {
-		async function fetchData() {
-			{
-				var resMovies = await getMovies().catch((e) => {
-					console.error(e);
-				});
-				setMovies(resMovies);
-			}
-		}
-		fetchData();
-		return () => {
-			//Cleaning up the data after the component dismounts
-			setMovies([]);
-		};
-	}, []);
-
-	return (
+const Home = ({movies}) => (
 		<GlobalContext.Provider value={{}}>
 			<div>
 				<Head>
@@ -80,7 +62,11 @@ const Home = () => {
 				</style>
 			</div>
 		</GlobalContext.Provider>
-	);
+    
+	)
+  Home.getInitialProps = async () => {
+    //Use this for server rendering so that the bots can get information when they crawl**
+    const movies = await getMovies()
+    return {movies}
 };
-
-export default Home;
+export default Home
