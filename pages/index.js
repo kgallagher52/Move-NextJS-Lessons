@@ -16,9 +16,8 @@ const Home = () => {
 		async function fetchData() {
 			{
 				var resMovies = await getMovies().catch((e) => {
-					console.log(e);
+					console.error(e);
 				});
-				console.log(resMovies);
 				setMovies(resMovies);
 			}
 		}
@@ -31,7 +30,6 @@ const Home = () => {
 
 	return (
 		<GlobalContext.Provider value={{}}>
-			{console.log('rendered')}
 			<div>
 				<Head>
 					<title>Home</title>
