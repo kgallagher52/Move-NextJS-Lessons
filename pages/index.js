@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 //Data Components
 import GlobalContext from '../context/globalContext';
-
+import { getMovies } from '../actions';
 //Components
 import NavBar from '../components/navbar';
 import Footer from '../components/footer';
@@ -11,9 +11,15 @@ import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
 const Home = () => {
-	const [ count, setCount ] = useState(0);
+  const [movies, setMovies] = useState([]);
+
+  getMovies().then((movies) => {
+    console.log(movies)
+    setMovies(movies)
+  })
 	return (
-		<GlobalContext.Provider value={{count, setCount}}>
+		<GlobalContext.Provider value={{}}>
+      {console.log("rendered")}
 			<div>
 				<Head>
 					<title>Home</title>
@@ -51,7 +57,7 @@ const Home = () => {
 								<Carousel />
 							</div>
 						</div>
-						<MovieList />
+						<MovieList movies={movies}/>
 						<Footer />
 					</div>
 				</div>

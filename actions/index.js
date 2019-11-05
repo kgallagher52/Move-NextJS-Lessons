@@ -28,7 +28,12 @@ const MOVIE_DATA = [
   }
 ]
 //Simulate real life scenerio
-export const getMovies =  () => {
-return MOVIE_DATA
+export const getMovies = () => {
+  //Creating a async simulation for the data
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(MOVIE_DATA)
+    }, 2000);
+  })
 }
   
