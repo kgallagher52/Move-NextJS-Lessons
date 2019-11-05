@@ -1,144 +1,32 @@
-import React, { useContext } from 'react'
+import React from 'react';
 
 //Data Component
-import GlobalContext from '../context/globalContext'
-
+import GlobalContext from '../context/globalContext';
+import MovieData from '../resources/1_data';
 const movieList = () => {
-  const { count, setCount} = useContext(GlobalContext)
-  return (
-    <>
-    <button className="btn btn-primary" onClick={() => setCount(count + 1)}>Increment Number</button>
-    <button onClick={() => setCount(count - 1)}>Decrement Number</button>
-    {count}
-      	<div className="row">
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item One</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur!
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
+	return (
+		<div className="row">
+			{MovieData.map((m) => (
+				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
+					<div className="card h-100">
+						<a href={m.image}>
+							<img className="card-img-top" src={m.image} alt={m.name} />
+						</a>
+						<div className="card-body">
+							<h4 className="card-title">
+								<a href="#">{m.name}</a>
+							</h4>
+							<h5>Rating: {m.rating}</h5>
+							<p className="card-text">{m.description}</p>
 						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item Two</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur! Lorem ipsum dolor sit amet.
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item Three</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur!
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item Four</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur!
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item Five</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur! Lorem ipsum dolor sit amet.
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
-						</div>
-
-						<div className="col-lg-4 col-md-6 mb-4">
-							<div className="card h-100">
-								<a href="#">
-									<img className="card-img-top" src="http://placehold.it/700x400" alt="" />
-								</a>
-								<div className="card-body">
-									<h4 className="card-title">
-										<a href="#">Item Six</a>
-									</h4>
-									<h5>$24.99</h5>
-									<p className="card-text">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-										aspernatur!
-									</p>
-								</div>
-								<div className="card-footer">
-									<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-								</div>
-							</div>
+						<div className="card-footer">
+							<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
 						</div>
 					</div>
-    </>
-  )
-}
+				</div>
+			))}
+		</div>
+	);
+};
 
-export default movieList
+export default movieList;
