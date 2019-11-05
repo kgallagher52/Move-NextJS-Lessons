@@ -17,7 +17,7 @@ const movieList = () => {
 								<a href="#">{m.name}</a>
 							</h4>
 							<h5>Rating: {m.rating}</h5>
-							<p className="card-text">{m.description}</p>
+							<p className="card-text">{m.description.substr(0, 150) + '...'}</p>
 						</div>
 						<div className="card-footer">
 							<small className="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
