@@ -36,6 +36,7 @@ const Home = () => (
 		</Head>
 
 		<NavBar />
+<div className="home-page">
 
 		<div className="container">
 			<div className="row">
@@ -50,6 +51,15 @@ const Home = () => (
 		<Footer />
 	</div>
   </div>
+  <style jsx>{`
+    .home-page {
+      margin-top:80px;
+    }
+    
+    `}
+
+  </style>
+</div>
 );
 
 export default Home;
