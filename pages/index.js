@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 //Data Components
 import GlobalContext from '../context/globalContext';
@@ -12,11 +12,17 @@ import MovieList from '../components/movieList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-
+useEffect(() => {
   getMovies().then((movies) => {
-    console.log(movies)
     setMovies(movies)
   })
+  return () => {
+    //Cleaning up the data after the component dismounts
+    setMovies([]);
+  };
+}, [])
+
+ 
 	return (
 		<GlobalContext.Provider value={{}}>
       {console.log("rendered")}
