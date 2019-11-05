@@ -11,23 +11,27 @@ import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
-useEffect(() => {
-  async function fetchData() {{
-    var resMovies = await getMovies();
-    setMovies(resMovies)
-  }}
-  fetchData()
-  return () => {
-    //Cleaning up the data after the component dismounts
-    setMovies([]);
-  };
-}, [])
+	const [ movies, setMovies ] = useState([]);
+	useEffect(() => {
+		async function fetchData() {
+			{
+				var resMovies = await getMovies().catch((e) => {
+					console.log(e);
+				});
+				console.log(resMovies);
+				setMovies(resMovies);
+			}
+		}
+		fetchData();
+		return () => {
+			//Cleaning up the data after the component dismounts
+			setMovies([]);
+		};
+	}, []);
 
- 
 	return (
 		<GlobalContext.Provider value={{}}>
-      {console.log("rendered")}
+			{console.log('rendered')}
 			<div>
 				<Head>
 					<title>Home</title>
@@ -65,7 +69,7 @@ useEffect(() => {
 								<Carousel />
 							</div>
 						</div>
-						<MovieList movies={movies}/>
+						{movies ? <MovieList movies={movies} /> : null}
 						<Footer />
 					</div>
 				</div>

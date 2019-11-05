@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-
-
-const movieList = ({movies}) => {
+const movieList = ({ movies }) => {
 	return (
 		<div className="row">
-			{movies.length > 0 ?
-        movies.map((m) => (
-          <div key={m.id} className="col-lg-4 col-md-6 mb-4">
+			{movies.map((m) => (
+				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
 					<div className="card h-100">
 						<a href={m.image}>
 							<img className="card-img-top" src={m.image} alt={m.name} />
@@ -24,17 +21,8 @@ const movieList = ({movies}) => {
 						</div>
 					</div>
 				</div>
-			)):<div className="loading">...Loading</div>}
-            <style jsx>
-              {` 
-                .loading {
-                  text-align:center;
-                  margin:0 auto;
-                }
-              `}
-      </style>
+			))}
 		</div>
-    
 	);
 };
 

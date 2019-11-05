@@ -32,7 +32,8 @@ export const getMovies = () => {
   //Creating a async simulation for the data
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(MOVIE_DATA)
+      resolve(MOVIE_DATA);
+      reject("Cannot fetch data!"); // Error handling
     }, 2000);
   })
 }
