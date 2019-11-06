@@ -6,14 +6,15 @@ const movieList = ({ movies }) => {
 			{movies.map((m) => (
 				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
 					<div className="card h-100">
-						<Link href={`/movies/${m.id}`}>
+            {/* ****href={`/movies/${m.id}` - Uses server side rendering **** as={`/movies/${m.id}`} - Uses Client side rendering */}
+						<Link href={`/movies/${m.id}`} as={`/movies/${m.id}`}>
 							<a>
 								<img className="card-img-top" src={m.image} alt={m.name} />
 							</a>
 						</Link>
 						<div className="card-body">
 							<h4 className="card-title">
-								<Link href={`/movies/${m.id}`}>
+								<Link href={`/movies/${m.id}`} as={`/movies/${m.id}`}>
 									<a>{m.name}</a>
 								</Link>
 							</h4>
