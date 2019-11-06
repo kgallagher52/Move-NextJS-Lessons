@@ -7,10 +7,15 @@ import Footer from '../components/footer';
 
 //_App.js - Makes this component wraps all components inside the project
 class MovieApp extends App {
-	// Execute here getInitialProps and pass this data to your page
+  // Execute here getInitialProps of page you are navigated to
+  static async getInitialProps(appContext) {
+    console.log("Calling getInitialProps from _app.js");
+    const appProps = await App.getInitialProps(appContext)
+    return { ...appProps }
+  }
 	render() {
 		// Component holds page you are navigating to
-		const { Component } = this.props;
+		const { Component,pageProps } = this.props;
 
 		return (
 			<div>
@@ -40,7 +45,8 @@ class MovieApp extends App {
 				</Head>
 				<NavBar />
 				<div className="base-page">
-					<Component />
+          {/* Deconstruct props if it's an array without having to name it */}
+					<Component {...pageProps} />
 				</div>
 
 				<style jsx>
