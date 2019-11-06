@@ -5,7 +5,7 @@ const navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div className="container">
 				<a className="navbar-brand" href="#">
-					Start Bootstrap
+					MOVIE TIME!!!
 				</a>
 				<button
 					className="navbar-toggler"
