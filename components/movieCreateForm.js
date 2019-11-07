@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const MovieCreateForm = (props) => {
-	const [ form, setForm ] = useState({
+	const [form, setForm] = useState({
 		name: '',
 		description: '',
 		rating: '',
@@ -18,12 +18,12 @@ const MovieCreateForm = (props) => {
 			...form,
 			[name]: target.value
 		});
-  };
-  
-  const submitForm = () => {
-    //{..form} - Creating a clone of the form so we are not directly mutating our data
-    props.handleFormSubmit({...form})
-  }
+	};
+
+	const submitForm = () => {
+		//{..form} - Creating a clone of the form so we are not directly mutating our data
+		props.handleFormSubmit({ ...form })
+	}
 
 	const handleGenreChange = () => {
 		//Two ways of getting options
@@ -135,7 +135,7 @@ const MovieCreateForm = (props) => {
 				</div>
 			</form>
 			<button onClick={() => submitForm()} type="button" className="btn btn-primary">
-        Create
+				Create
 			</button>
 		</div>
 	);
