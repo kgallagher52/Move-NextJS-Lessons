@@ -1,12 +1,18 @@
 import Modal from './modal'
 import MovieCreateForm from "./movieCreateForm";
-
+import { createMovie } from '../actions/'
 
 const sideMenu = ({categories}) => {
+const handleCreateMovie = (movie) => {
+  createMovie(movie).then((movies) => {
+    console.log(JSON.stringify(movies))
+  })
+}
+
 	return (
 		<>
-      <Modal>
-        <MovieCreateForm/>
+      <Modal hasSubmit={false}>
+        <MovieCreateForm handleFormSubmit={handleCreateMovie}/>
       </Modal>
 			<h1 className="my-4">Movie Types</h1>
 			<div className="list-group">

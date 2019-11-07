@@ -58,6 +58,17 @@ export const getMovies = () => {
   })
 }
 
+export const createMovie = (movie) => {
+  return new Promise((resolve, reject) => {
+    //Add Id to the movie being created
+    MOVIE_DATA.push(movie)
+    setTimeout(() => {
+      resolve(MOVIE_DATA);
+      reject("Cannot fetch data on createMovie"); // Error handling
+    }, 2000);
+  })
+}
+
 export const getMovieById = (id) => {
   return new Promise((resolve, reject) => {
     const movieIndex = MOVIE_DATA.findIndex((movie) => {

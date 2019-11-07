@@ -1,42 +1,48 @@
 import { useState } from 'react';
 
-const MovieCreateForm = () => {
+const MovieCreateForm = (props) => {
+  // Fix uncontrolled data!
 	const [ form, setForm ] = useState({
 		name: '',
 		description: '',
 		rating: '',
 		image: '',
 		cover: '',
-    longDesc: '',
-    genre:''
+		longDesc: '',
+		genre: ''
 	});
 
-	const handleChange = e => {
-    const target = e.target;
-    const name = target.name;
-    setForm ({
-      ...form,
-      [name]: target.value
-    })
+	const handleChange = (e) => {
+		const target = e.target;
+		const name = target.name;
+		setForm({
+			...form,
+			[name]: target.value
+		});
   };
   
-  const handleGenreChange = () => {
-    //Two ways of getting options
-    // const options = event.target.options;
-    const {options} = event.target;
-    const optionsLength = options.length;
-    let value = [];
-    
-    for (let i = 0; i < optionsLength; i++) {
-      if(options[i].selected) {
-        value.push(options[i].value)
-      }
-    }
-    setForm({
-      ...form,
-      genre: value.toString()
-    })
+  const submitForm = () => {
+    //{..form} - Creating a clone of the form so we are not directly mutating our data
+    props.handleFormSubmit({...form})
   }
+
+	const handleGenreChange = () => {
+		//Two ways of getting options
+		// const options = event.target.options;
+		const { options } = event.target;
+		const optionsLength = options.length;
+		let value = [];
+
+		for (let i = 0; i < optionsLength; i++) {
+			if (options[i].selected) {
+				value.push(options[i].value);
+			}
+		}
+		setForm({
+			...form,
+			genre: value.toString()
+		});
+	};
 
 	return (
 		<div>
@@ -129,6 +135,9 @@ const MovieCreateForm = () => {
 					</select>
 				</div>
 			</form>
+			<button onClick={() => submitForm()} type="button" className="btn btn-primary">
+        Create
+			</button>
 		</div>
 	);
 };

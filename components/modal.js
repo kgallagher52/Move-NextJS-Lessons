@@ -36,9 +36,12 @@
 							<button ref={e => closeButton = e} type="button" className="btn btn-secondary" data-dismiss="modal">
 								Close
 							</button>
-							<button  onClick={() => submitModal()} type="button" className="btn btn-primary">
+              {props.hasSubmit &&
+
+                <button  onClick={() => submitModal()} type="button" className="btn btn-primary">
 								Save changes
 							</button>
+              }
 						</div>
 					</div>
 				</div>
