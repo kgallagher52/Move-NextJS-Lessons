@@ -4,7 +4,7 @@ import Carousel from '../components/carousel';
 import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
-const Home = ({movies}) => (
+const Home = ({movies, images}) => (
 		<div className="home-page">
 			<div className="container">
 				<div className="row">
@@ -12,7 +12,7 @@ const Home = ({movies}) => (
 						<SideMenu />
 					</div>
 					<div className="col-lg-9">
-						<Carousel />
+          {images ? <Carousel  images={images} /> : null}
 					</div>
 				</div>
 				{movies ? <MovieList movies={movies} /> : null}
@@ -22,7 +22,12 @@ const Home = ({movies}) => (
 Home.getInitialProps = async () => {
   console.log("Calling getInitialProps from Home");
 	//Use this for server rendering so that the bots can get information when they crawl**
-	const movies = await getMovies();
-	return { movies };
+  const movies = await getMovies();
+  const images  = movies.map(m => ({
+      id:`image-${m.id}`,
+      url:m.imageCover,
+      name:m.name
+  }))
+	return { movies,images };
 }
 export default Home;
