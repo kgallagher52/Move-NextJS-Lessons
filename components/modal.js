@@ -1,5 +1,5 @@
 
- const Modal = () => {
+ const Modal = (props) => {
    let closeButton = null;
    const submitModal = () => {
      alert('Submitting Modal');
@@ -29,7 +29,9 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div className="modal-body">...</div>
+						<div className="modal-body">
+              {props.children}
+            </div>
 						<div className="modal-footer">
 							<button ref={e => closeButton = e} type="button" className="btn btn-secondary" data-dismiss="modal">
 								Close
