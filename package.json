@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server/index.js",
+    "dev": "nodemon -w server/index.js server/index.js",
     "build": "next build",
     "start": "next start"
   },
@@ -13,5 +13,8 @@
     "next": "9.1.2",
     "react": "16.11.0",
     "react-dom": "16.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }

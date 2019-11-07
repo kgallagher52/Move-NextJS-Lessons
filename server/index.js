@@ -1,7 +1,6 @@
 // Running a custom server instead of the built in server. 
 // If you wanted to go back to the older built in server just go to the package.json,
 // and change the dev script back to "next dev"
-
 const next = require('next')
 const express = require('express');
 
@@ -12,6 +11,11 @@ const handle = app.getRequestHandler() // Creating handlers handling our request
 app.prepare().then(() => { // Compile our code
 
   const server = express(); //Creating the express server
+
+  server.get('/api/v1/movies', (req,res) => {
+    res.json({message: 'Hello World'})
+  })
+
   server.get('*', (req, res) => { //* is handling all request's coming to our server.
   //Next js is handling the requests for us and providing pages where we are navigating to.
     return handle(req, res) //This is going to parse our route and handle the correct route it needs to go to.
