@@ -61,6 +61,8 @@ export const getMovies = () => {
 export const createMovie = (movie) => {
   return new Promise((resolve, reject) => {
     //Add Id to the movie being created
+    //Create random number, set it to a string with 36 bytes encoding, and then shorten it to only five characters result = ka7b3
+    movie.id = Math.random().toString(36).substr(2,7);
     MOVIE_DATA.push(movie)
     setTimeout(() => {
       resolve(MOVIE_DATA);
