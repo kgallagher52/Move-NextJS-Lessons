@@ -13,10 +13,44 @@ app.prepare().then(() => {
 
 	const server = express(); //Creating the express server
 
-	//Example get endpoint
+/*___GETS___*/ 
 	server.get('/api/v1/movies', (req, res) => {
 		res.json({ message: 'Hello World' });
 	});
+
+	server.get('*', (req, res) => {
+		//* is handling all request's coming to our server.
+		//Next js is handling the requests for us and providing pages where we are navigating to.
+		return handle(req, res); //This is going to parse our route and handle the correct route it needs to go to.
+  });
+  
+/*___POSTS___*/ 
+  server.post('/api/v1/movies', (req,res) => {
+    res.json({ message: 'Saving Movie' });
+  })
+
+/*___UPDATES___*/
+  server.patch('/api/v1/movies/:id', (req,res) => {
+    const { id } = req.params
+    res.json({ message:`Updating movie of id: ${id}` });
+  })
+
+/*___DELETES___*/
+  server.delete('/api/v1/movies/:id', (req,res) => {
+    const { id } = req.params
+    res.json({ message:`Deleting movie of id: ${id}` });
+  })
+
+	const PORT = process.env.PORT || 3000; // We are trying to get the port from enviorment variable if that does not exist use 3000
+
+	server.listen(PORT, (err) => {
+		// Listining to the requests from the handle server middlware  I could use this server.use(handle) and not add the code above
+		if (err) throw err;
+		console.log('> Ready on port ' + PORT);
+	});
+});
+
+
   //Sending an HTML page example
 	// server.get('/faq', (req, res) => {
   //   res.send(`
@@ -28,18 +62,3 @@ app.prepare().then(() => {
   //   </html>
   //     `);
 	// });
-
-	server.get('*', (req, res) => {
-		//* is handling all request's coming to our server.
-		//Next js is handling the requests for us and providing pages where we are navigating to.
-		return handle(req, res); //This is going to parse our route and handle the correct route it needs to go to.
-	});
-
-	const PORT = process.env.PORT || 3000; // We are trying to get the port from enviorment variable if that does not exist use 3000
-
-	server.listen(PORT, (err) => {
-		// Listining to the requests from the handle server middlware  I could use this server.use(handle) and not add the code above
-		if (err) throw err;
-		console.log('> Ready on port ' + PORT);
-	});
-});
