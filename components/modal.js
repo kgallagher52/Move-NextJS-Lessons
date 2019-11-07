@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 
 //We changed this to a class component so that in sideMenu we can refrence this modal and close the modal from movieCreateForm.js
 class Modal extends Component {
-    constructor(props) {
-      super(props)   
-      this.closeButton = null
-    }
+	constructor(props) {
+		super(props)
+		this.closeButton = null
+	}
 
-    closeModal() {
-      this.closeButton.click()
-    }
+	closeModal() {
+		this.closeButton.click()
+	}
 
-    submitModal = () => {
-			alert('Submitting Modal');
-			this.closeModal()
-		};
+	submitModal = () => {
+		alert('Submitting Modal');
+		this.closeModal()
+	};
 
 	render() {
 		return (
@@ -52,7 +52,7 @@ class Modal extends Component {
 									Close
 								</button>
 								{this.props.hasSubmit && (
-									<button onClick={() => submitModal()} type="button" className="btn btn-primary">
+									<button onClick={submitModal} type="button" className="btn btn-primary">
 										Save changes
 									</button>
 								)}

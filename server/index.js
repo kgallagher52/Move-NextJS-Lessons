@@ -9,7 +9,10 @@ const dev = process.env.NODE_ENV !== 'production'; //Checking what enviorment we
 const app = next({ dev }); //Then creating our presentation of our application using next framework and passing in what enviorment we are in.
 const handle = app.getRequestHandler(); // Creating handlers handling our requests and needs it to serve us the correct pages.
 
-const moviesData = require('./data.json');
+const filePath = './data.json';
+const fs = require('fs'); //This is a package that allows you to write to files
+const path = require('path');
+const moviesData = require(filePath);
 
 app.prepare().then(() => { // Compile our code
 
@@ -17,6 +20,7 @@ app.prepare().then(() => { // Compile our code
   server.use(bodyParser.json()) //Telling the server to use this middlware
 
   /*___GETS___*/
+
   server.get('/api/v1/movies', (req, res) => {
     return res.json(moviesData);
   });
@@ -27,24 +31,35 @@ app.prepare().then(() => { // Compile our code
 
     return res.json(movie);
   })
+
   /*____________*/
 
   /*___POSTS___*/
+
   server.post('/api/v1/movies', (req, res) => {
     const movie = req.body;
-    res.json({ ...movie, createdTime: 'today', author: 'Keaton Gallagher' });
+    moviesData.push(movie);
+
+    const pathToFile = path.join(__dirname, filePath); // This addes the full path to our data
+    const stringifiedData = JSON.stringify(movie, null, 2); //Null and 2 will make so that it's not all on one line when it's outputted 
+
+    fs.writeFile(pathToFile, stringifiedData, (error) => {
+      if (error) {
+        return res.status(422).send(error) //422 Something is wrong with the data send will send this to the client
+      }
+    }) //Three things need to be specified for this 1. Path to file 2.Data 3.Function if we get errors
+    return res.json('Movie has been successfuly added!');
   })
-  /*____________*/
 
-
-  /*___UPDATES___*/
   /*____________*/
 
   /*___DELETES___*/
+
   server.delete('/api/v1/movies/:id', (req, res) => {
     const { id } = req.params
     res.json({ message: `Deleting movie of id: ${id}` });
   })
+
   /*____________*/
 
 
