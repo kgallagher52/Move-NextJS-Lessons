@@ -24,8 +24,6 @@ Home.getInitialProps = async () => {
 	//Use this for server rendering so that the bots can get information when they crawl**
   const movies = await getMovies();
   const categories = await getCategories();
-  console.log(categories)
-
   const images  = movies.map(m => ({
       id:`image-${m.id}`,
       url:m.imageCover,
