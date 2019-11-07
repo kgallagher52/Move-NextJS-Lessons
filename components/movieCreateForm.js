@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 const MovieCreateForm = (props) => {
-  // Fix uncontrolled data!
 	const [ form, setForm ] = useState({
 		name: '',
 		description: '',
