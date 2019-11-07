@@ -52,7 +52,7 @@ class Modal extends Component {
 									Close
 								</button>
 								{this.props.hasSubmit && (
-									<button onClick={submitModal} type="button" className="btn btn-primary">
+									<button onClick={() => submitModal()} type="button" className="btn btn-primary">
 										Save changes
 									</button>
 								)}

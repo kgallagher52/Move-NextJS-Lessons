@@ -41,7 +41,7 @@ app.prepare().then(() => { // Compile our code
     moviesData.push(movie);
 
     const pathToFile = path.join(__dirname, filePath); // This addes the full path to our data
-    const stringifiedData = JSON.stringify(movie, null, 2); //Null and 2 will make so that it's not all on one line when it's outputted 
+    const stringifiedData = JSON.stringify(moviesData, null, 2); //Null and 2 will make so that it's not all on one line when it's outputted 
 
     fs.writeFile(pathToFile, stringifiedData, (error) => {
       if (error) {
@@ -57,8 +57,19 @@ app.prepare().then(() => { // Compile our code
 
   server.delete('/api/v1/movies/:id', (req, res) => {
     const { id } = req.params
-    res.json({ message: `Deleting movie of id: ${id}` });
+    const movieIndex = moviesData.findIndex(m => m.id === id);
+    moviesData.splice(movieIndex, 1)
+    const pathToFile = path.join(__dirname, filePath); // This addes the full path to our data
+    const stringifiedData = JSON.stringify(moviesData, null, 2); //Null and 2 will make so that it's not all on one line when it's outputted 
+
+    fs.writeFile(pathToFile, stringifiedData, (error) => {
+      if (error) {
+        return res.status(422).send(error) //422 Something is wrong with the data send will send this to the client
+      }
+    }) //Three things need to be specified for this 1. Path to file 2.Data 3.Function if we get errors
+    return res.json('Movie has been successfuly deleted!');
   })
+
 
   /*____________*/
 

@@ -134,7 +134,7 @@ const MovieCreateForm = (props) => {
 					</select>
 				</div>
 			</form>
-			<button onClick={submitForm} type="button" className="btn btn-primary">
+			<button onClick={() => submitForm()} type="button" className="btn btn-primary">
 				Create
 			</button>
 		</div>
