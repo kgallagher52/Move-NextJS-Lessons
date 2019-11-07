@@ -3,6 +3,7 @@
 // and change the dev script back to "next dev"
 const next = require('next');
 const express = require('express');
+const bodyParser = require('body-parser'); // This is a middlware that will make the req availiable on the req.body
 
 const dev = process.env.NODE_ENV !== 'production'; //Checking what enviorment we are in
 const app = next({ dev }); //Then creating our presentation of our application using next framework and passing in what enviorment we are in.
@@ -11,7 +12,8 @@ const handle = app.getRequestHandler(); // Creating handlers handling our reques
 app.prepare().then(() => {
 	// Compile our code
 
-	const server = express(); //Creating the express server
+  const server = express(); //Creating the express server
+  server.use(bodyParser.json()) //Telling the server to use this middlware
 
 /*___GETS___*/ 
 	server.get('/api/v1/movies', (req, res) => {
@@ -26,7 +28,8 @@ app.prepare().then(() => {
   
 /*___POSTS___*/ 
   server.post('/api/v1/movies', (req,res) => {
-    res.json({ message: 'Saving Movie' });
+    const movie = req.body;
+    res.json({...movie, createdTime:'today', author:'Keaton Gallagher'});
   })
 
 /*___UPDATES___*/
