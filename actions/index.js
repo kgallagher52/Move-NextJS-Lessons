@@ -30,6 +30,23 @@ const MOVIE_DATA = [
     imageCover:'https://images.unsplash.com/photo-1567175220991-788d36f3c17a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80'
   }
 ]
+
+const CATEGORY_DATA = [
+  {id:1,name: 'Drama'},
+  {id:2,name: 'Action'},
+  {id:3,name: 'Adventure'},
+  {id:4,name: 'Historical'}
+]
+
+export const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(CATEGORY_DATA);
+      reject("Cannot fetch data on getCategories"); // Error handling
+    }, 2000);
+  })
+}
+
 //Simulate real life scenerio
 export const getMovies = () => {
   //Creating a async simulation for the data
