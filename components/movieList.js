@@ -5,8 +5,7 @@ const movieList = ({ movies }) => {
 		<div className="row">
 
 			{movies.map(m => (
-				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
-					{console.log(m.id)}
+				<div key={m.id} className="col-lg-4 col-md-4 mb-4">
 					<div className="card h-100">
 						{/* ****href={`/movies/${m.id}` - Uses server side rendering **** as={`/movies/${m.id}`} - Uses Client side rendering */}
 						<Link href={`/movies/${m.id}`} as={`/movies/${m.id}`}>
