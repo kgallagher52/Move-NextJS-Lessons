@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const MovieCreateForm = (props) => {
+	const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 	const [form, setForm] = useState({
 		name: '',
 		description: '',
@@ -8,8 +9,14 @@ const MovieCreateForm = (props) => {
 		image: '',
 		cover: '',
 		longDesc: '',
-		genre: ''
 	});
+
+	useEffect(() => {
+		if (props.initialData) {
+			setForm(props.initialData)
+			setIsInitialDataLoaded(true)
+		}
+	}, [isInitialDataLoaded])
 
 	const handleChange = (e) => {
 		const target = e.target;

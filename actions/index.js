@@ -37,6 +37,12 @@ export const createMovie = (movie) => {
   movie.id = Math.random().toString(36).substr(2, 7);
   return axios.post(`${BASE_URL}/api/v1/movies`, movie).then(res => res.data);
 }
+/*____UPDATES____*/
+
+export const updateMovie = (movie) => {
+  return axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`, movie)
+    .then(res => res.data)
+}
 
 /*____DELETES____*/
 

@@ -25,6 +25,7 @@ const Movie = ({ movie }) => {
                 </p>
                 <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Learn more</button>
                 <button onClick={() => handleDeleteMovie(id)} className="btn btn-primary btn-lg" href="#" role="button">Delete</button>
+                <button onClick={() => router.push(`/movies/${id}/edit`)} className="btn btn-warning ml-1 btn-lg" href="#" role="button">Edit</button>
 
             </div>
             <p className="desc-text">

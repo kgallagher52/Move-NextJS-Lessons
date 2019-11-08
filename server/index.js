@@ -33,6 +33,28 @@ app.prepare().then(() => { // Compile our code
   })
 
   /*____________*/
+  /*______UPDATES______*/
+
+  server.patch('/api/v1/movies/:id', (req, res) => {
+    const { id } = req.params
+    const movie = req.body
+    const movieIndex = moviesData.findIndex(m => m.id === id)
+
+    moviesData[movieIndex] = movie
+
+    const pathToFile = path.join(__dirname, filePath)
+    const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err)
+      }
+
+      return res.json(movie)
+    })
+  })
+  /*____________*/
+
 
   /*___POSTS___*/
 
