@@ -3,10 +3,12 @@ import Link from 'next/link';
 const movieList = ({ movies }) => {
 	return (
 		<div className="row">
-			{movies.map((m) => (
+
+			{movies.map(m => (
 				<div key={m.id} className="col-lg-4 col-md-6 mb-4">
+					{console.log(m.id)}
 					<div className="card h-100">
-            {/* ****href={`/movies/${m.id}` - Uses server side rendering **** as={`/movies/${m.id}`} - Uses Client side rendering */}
+						{/* ****href={`/movies/${m.id}` - Uses server side rendering **** as={`/movies/${m.id}`} - Uses Client side rendering */}
 						<Link href={`/movies/${m.id}`} as={`/movies/${m.id}`}>
 							<a>
 								<img className="card-img-top" src={m.image} alt={m.name} />

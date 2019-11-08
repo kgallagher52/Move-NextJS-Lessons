@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { getMovieById, deleteMovie } from '../../../actions';
+import Link from 'next/link';
 
 const Movie = ({ movie }) => {
     const router = useRouter();
@@ -25,7 +26,9 @@ const Movie = ({ movie }) => {
                 </p>
                 <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Learn more</button>
                 <button onClick={() => handleDeleteMovie(id)} className="btn btn-primary btn-lg" href="#" role="button">Delete</button>
-                <button onClick={() => router.push(`/movies/${id}/edit`)} className="btn btn-warning ml-1 btn-lg" href="#" role="button">Edit</button>
+                <Link href="/movies/[id]/edit" as={`/movies/${id}/edit`}>
+                    <button className="btn btn-warning ml-1 btn-lg" role="button">Edit</button>
+                </Link>
 
             </div>
             <p className="desc-text">

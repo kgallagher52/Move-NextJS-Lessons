@@ -19,8 +19,8 @@ const EditMovie = ({ movie }) => {
     }, [])
 
     const handleUpdateMovie = (movie) => {
-        updateMovie(movie).then((movies) => {
-            router.push('/')
+        updateMovie(movie).then((updatedMovie) => {
+            router.push('/movies/[id]', `/movies/${movie.id}`)
         })
     }
 
