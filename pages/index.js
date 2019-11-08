@@ -5,10 +5,22 @@ import SideMenu from '../components/sideMenu';
 import MovieList from '../components/movieList';
 
 const Home = ({ movies, images, categories }) => {
-	const [filter, setFilter] = useState('');
+	const [filter, setFilter] = useState('all');
+
 	const changeCategory = category => {
 		setFilter(category);
 	}
+
+	const filterMovies = movies => {
+		if (filter === 'all') {
+			return movies
+		}
+		return movies.filter((m) => {
+			console.log(m.genre);
+			return m.genre && m.genre.includes(filter)
+		})
+	}
+
 	return (
 		<div className="home-page" >
 			<div className="container">
@@ -26,13 +38,13 @@ const Home = ({ movies, images, categories }) => {
 						{images ?
 							<>
 								<Carousel images={images} />
-								<h1>Displaying {filter ? filter : "all"} movies</h1>
+								<h1>Displaying {filter} movies</h1>
 							</>
 
 							: null}
 					</div>
 				</div>
-				{movies ? <MovieList movies={movies} /> : null}
+				{movies ? <MovieList movies={filterMovies(movies) || []} /> : null}
 			</div>
 		</div >
 	)
