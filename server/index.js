@@ -94,7 +94,9 @@ app.prepare().then(() => { // Compile our code
 
 
   /*____________*/
-
+  server.post('*', (req, res) => {
+    return handle(req, res); 
+  });
 
   server.get('*', (req, res) => {
     //* is handling all request's coming to our server.
