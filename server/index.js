@@ -94,19 +94,19 @@ app.prepare().then(() => { // Compile our code
 
 
   /*____________*/
-  server.post('*', (req, res) => {
-    return handle(req, res); 
-  });
+  // server.post('*', (req, res) => {
+  //   return handle(req, res); 
+  // });
 
-  server.get('*', (req, res) => {
-    //* is handling all request's coming to our server.
-    //Next js is handling the requests for us and providing pages where we are navigating to.
-    return handle(req, res); //This is going to parse our route and handle the correct route it needs to go to.
-  });
+  // server.get('*', (req, res) => {
+  //   //* is handling all request's coming to our server.
+  //   //Next js is handling the requests for us and providing pages where we are navigating to.
+  //   return handle(req, res); //This is going to parse our route and handle the correct route it needs to go to.
+  // });
 
   const PORT = process.env.PORT || 3000; // We are trying to get the port from enviorment variable if that does not exist use 3000
 
-  server.listen(PORT, (err) => {
+  server.use(handle).listen(PORT, (err) => {
     // Listining to the requests from the handle server middlware  I could use this server.use(handle) and not add the code above
     if (err) throw err;
     console.log('> Ready on port ' + PORT);
