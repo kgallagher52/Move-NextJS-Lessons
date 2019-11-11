@@ -16,7 +16,6 @@ const Home = ({ movies, images, categories }) => {
 			return movies
 		}
 		return movies.filter((m) => {
-			console.log(m.genre);
 			return m.genre && m.genre.includes(filter)
 		})
 	}
@@ -50,7 +49,6 @@ const Home = ({ movies, images, categories }) => {
 	)
 };
 Home.getInitialProps = async () => {
-	console.log("Calling getInitialProps from Home");
 	//Use this for server rendering so that the bots can get information when they crawl**
 	const movies = await getMovies();
 	const categories = await getCategories();

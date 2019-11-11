@@ -19,7 +19,6 @@ app.prepare().then(() => { // Compile our code
   const server = express(); //Creating the express server
   server.use(bodyParser.json()) //Telling the server to use this middlware
 
-  /*___GETS___*/
 
   server.get('/api/v1/movies', (req, res) => {
     return res.json(moviesData);
@@ -31,9 +30,6 @@ app.prepare().then(() => { // Compile our code
 
     return res.json(movie);
   })
-
-  /*____________*/
-  /*______UPDATES______*/
 
   server.patch('/api/v1/movies/:id', (req, res) => {
     const { id } = req.params
@@ -53,10 +49,6 @@ app.prepare().then(() => { // Compile our code
       return res.json(movie)
     })
   })
-  /*____________*/
-
-
-  /*___POSTS___*/
 
   server.post('/api/v1/movies', (req, res) => {
     const movie = req.body;
@@ -73,9 +65,6 @@ app.prepare().then(() => { // Compile our code
     return res.json('Movie has been successfuly added!');
   })
 
-  /*____________*/
-
-  /*___DELETES___*/
 
   server.delete('/api/v1/movies/:id', (req, res) => {
     const { id } = req.params
@@ -91,37 +80,9 @@ app.prepare().then(() => { // Compile our code
     }) //Three things need to be specified for this 1. Path to file 2.Data 3.Function if we get errors
     return res.json('Movie has been successfuly deleted!');
   })
-
-
-  /*____________*/
-  // server.post('*', (req, res) => {
-  //   return handle(req, res); 
-  // });
-
-  // server.get('*', (req, res) => {
-  //   //* is handling all request's coming to our server.
-  //   //Next js is handling the requests for us and providing pages where we are navigating to.
-  //   return handle(req, res); //This is going to parse our route and handle the correct route it needs to go to.
-  // });
-
   const PORT = process.env.PORT || 3000; // We are trying to get the port from enviorment variable if that does not exist use 3000
-
   server.use(handle).listen(PORT, (err) => {
-    // Listining to the requests from the handle server middlware  I could use this server.use(handle) and not add the code above
     if (err) throw err;
     console.log('> Ready on port ' + PORT);
   });
 });
-
-
-  //Sending an HTML page example
-	// server.get('/faq', (req, res) => {
-  //   res.send(`
-  //   <html>
-  //     <head></head>
-  //     <body>   
-  //       <h1>Hello World</h1>
-  //     </body>
-  //   </html>
-  //     `);
-	// });
