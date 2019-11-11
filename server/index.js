@@ -20,18 +20,18 @@ app.prepare().then(() => { // Compile our code
   server.use(bodyParser.json()) //Telling the server to use this middlware
 
 
-  server.get('/api/v1/movies', (req, res) => {
+  server.get(`${process.env.BASE_URL}/api/v1/movies`, (req, res) => {
     return res.json(moviesData);
   });
 
-  server.get('/api/v1/movies/:id', (req, res) => {
+  server.get(`${process.env.BASE_URL}/api/v1/movies/:id`, (req, res) => {
     const { id } = req.params
     const movie = moviesData.find(m => m.id === id);
 
     return res.json(movie);
   })
 
-  server.patch('/api/v1/movies/:id', (req, res) => {
+  server.patch(`${process.env.BASE_URL}/api/v1/movies/:id`, (req, res) => {
     const { id } = req.params
     const movie = req.body
     const movieIndex = moviesData.findIndex(m => m.id === id)
@@ -50,7 +50,7 @@ app.prepare().then(() => { // Compile our code
     })
   })
 
-  server.post('/api/v1/movies', (req, res) => {
+  server.post(`${process.env.BASE_URL}/api/v1/movies`, (req, res) => {
     const movie = req.body;
     moviesData.push(movie);
 
@@ -66,7 +66,7 @@ app.prepare().then(() => { // Compile our code
   })
 
 
-  server.delete('/api/v1/movies/:id', (req, res) => {
+  server.delete(`${process.env.BASE_URL}/api/v1/movies/:id`, (req, res) => {
     const { id } = req.params
     const movieIndex = moviesData.findIndex(m => m.id === id);
     moviesData.splice(movieIndex, 1)

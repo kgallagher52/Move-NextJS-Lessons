@@ -1,5 +1,4 @@
 import axios from 'axios';
-import bodyParser from 'body-parser';
 
 export default async (req, res)  => {
   if(req.method === 'POST') {

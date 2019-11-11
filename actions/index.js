@@ -1,7 +1,4 @@
 import axios from 'axios'
-
-const BASE_URL = "http://localhost:3000"
-
 const MOVIE_DATA = []
 
 const CATEGORY_DATA = [
@@ -24,15 +21,15 @@ export const getCategories = () => {
 }
 
 export const getMovies = () => {
-  return axios.get(`${BASE_URL}/api/v1/movies`).then(res => res.data);
+  return axios.get(`${process.env.BASE_URL}/api/v1/movies`).then(res => res.data);
 }
 
 export const getPosts = () => {
-  return axios.get(`${BASE_URL}/api/v1/posts`).then(res => res.data);
+  return axios.get(`${process.env.BASE_URL}/api/v1/posts`).then(res => res.data);
 }
 
 export const getMovieById = (id) => {
-  return axios.get(`${BASE_URL}/api/v1/posts/${id}`).then(res => res.data);
+  return axios.get(`${process.env.BASE_URL}/api/v1/posts/${id}`).then(res => res.data);
 }
 
 /*____POSTS____*/
@@ -40,18 +37,18 @@ export const getMovieById = (id) => {
 export const createMovie = (movie) => {
   //Create random number, set it to a string with 36 bytes encoding, and then shorten it to only five characters result = ka7b3
   movie.id = Math.random().toString(36).substr(2, 7);
-  return axios.post(`${BASE_URL}/api/v1/movies`, movie).then(res => res.data);
+  return axios.post(`${process.env.BASE_URL}/api/v1/movies`, movie).then(res => res.data);
 }
 /*____UPDATES____*/
 
 export const updateMovie = (movie) => {
-  return axios.patch(`${BASE_URL}/api/v1/movies/${movie.id}`, movie)
+  return axios.patch(`${process.env.BASE_URL}/api/v1/movies/${movie.id}`, movie)
     .then(res => res.data)
 }
 
 /*____DELETES____*/
 
 export const deleteMovie = (id) => {
-  return axios.delete(`${BASE_URL}/api/v1/movies/${id}`).then(res => res.data);
+  return axios.delete(`${process.env.BASE_URL}/api/v1/movies/${id}`).then(res => res.data);
 }
 
