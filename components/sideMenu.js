@@ -24,7 +24,7 @@ const sideMenu = ({ categories, changeCategory, activeCategory }) => {
       <div className="list-group">
         {categories.map(c => (
           <a onClick={() =>
-            changeCategory(c.name)} key={c.id} href="#"
+            changeCategory(c.name)} key={c.id} href="/"
             className={c.name === activeCategory ? "list-group-item active" : "list-group-item"}>
             {c.name}
           </a>

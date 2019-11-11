@@ -4,7 +4,7 @@ const navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 			<div className="container">
-				<a className="navbar-brand" href="#">
+				<a className="navbar-brand" href="/">
 					MOVIE TIME!!!
 				</a>
 				<button

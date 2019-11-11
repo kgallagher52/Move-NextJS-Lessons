@@ -24,8 +24,8 @@ const Movie = ({ movie }) => {
                 <p>
                     Genre: {movie.genre}
                 </p>
-                <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Learn more</button>
-                <button onClick={() => handleDeleteMovie(id)} className="btn btn-primary btn-lg" href="#" role="button">Delete</button>
+                <button className="btn btn-primary btn-lg mr-1" href="/" role="button">Learn more</button>
+                <button onClick={() => handleDeleteMovie(id)} className="btn btn-primary btn-lg" href="/" role="button">Delete</button>
                 <Link href="/movies/[id]/edit" as={`/movies/${id}/edit`}>
                     <button className="btn btn-warning ml-1 btn-lg" role="button">Edit</button>
                 </Link>
@@ -47,7 +47,6 @@ const Movie = ({ movie }) => {
 Movie.getInitialProps = async (context) => {
     //Using context allows us to grab the information. More details about context information to come
     const { id } = context.query;
-    console.log('Calling getInitialProps from movie.js');
     //Use this for server rendering so that the bots can get information when they crawl**
     const movie = await getMovieById(id);
     return { movie };
