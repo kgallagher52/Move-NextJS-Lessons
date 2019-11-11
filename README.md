@@ -4,6 +4,7 @@
 ## Sources
   1. https://www.udemy.com/course/awesome-nextjs-with-react-and-node-amazing-portfolio-app/learn/lecture/16349880#overview
   2. https://nextjs.org/docs
+  3. https://jsonplaceholder.typicode.com/
 
 
 ## Launching Project

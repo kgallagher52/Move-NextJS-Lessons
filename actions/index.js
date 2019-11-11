@@ -27,8 +27,12 @@ export const getMovies = () => {
   return axios.get(`${BASE_URL}/api/v1/movies`).then(res => res.data);
 }
 
+export const getPosts = () => {
+  return axios.get(`${BASE_URL}/api/v1/posts`).then(res => res.data);
+}
+
 export const getMovieById = (id) => {
-  return axios.get(`${BASE_URL}/api/v1/movies/${id}`).then(res => res.data);
+  return axios.get(`${BASE_URL}/api/v1/posts/${id}`).then(res => res.data);
 }
 
 /*____POSTS____*/
